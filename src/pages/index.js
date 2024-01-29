@@ -1,5 +1,7 @@
-import BlogProject from "./BlogProject";
+import BlogProject from "./blogProject";
 
 export default function Home() {
-  return;
+  return <div>
+    <BlogProject/>
+  </div>;
 }
