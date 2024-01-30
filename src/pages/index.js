@@ -3,6 +3,7 @@ import React from "react";
 
 export default function Home(props) {
   const { articles } = props;
+  console.log(articles);
   return (
     <div>
       {articles.map((data) => (
@@ -12,7 +13,7 @@ export default function Home(props) {
   );
 }
 export async function getStaticProps() {
-  const result = await fetch("https://dev.to/api/articles?per_page=10&top=2");
+  const result = await fetch("https://dev.to/api/articles?per_page=1&top=1");
   const posts = await result.json();
   console.log(posts);
   return {
