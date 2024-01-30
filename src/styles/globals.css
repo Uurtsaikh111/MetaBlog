@@ -7,3 +7,30 @@
   padding: 0;
   margin: 0;
 }
+
+@layer base {
+p {
+    @apply text-[#97989F] font-normal
+    text-base;
+  }
+  h2 {
+    @apply text-[#181A2A] font-semibold
+    text-4xl ;
+  }
+  h3 {
+    @apply text-white font-medium bg-[#4B6BFB]
+    text-sm;
+  }
+  h1 {
+    @apply text-[#FFF] font-semibold
+    text-lg;
+  }
+  h4 {
+    @apply text-[#181A2A] font-semibold
+    text-2xl;
+  }
+  h5 {
+    @apply text-[#4B6BFB] font-medium bg-white
+    text-sm;
+  }
+ }

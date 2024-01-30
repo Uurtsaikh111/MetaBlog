@@ -1,18 +1,21 @@
 import React from "react";
 
 export default function Highlight(props) {
-  console.log("data", props);
-  const { data } = props;
+  console.log(props)
+  const {data} = props;
   return (
     <div>
-      <div className="border flex gap-4 flex-col p-3 rounded-lg bg-gray-50 relative">
-        <img src={data.social_image} alt="" className="rounded-lg w-[500px]" />
-        <div className="w-[250px] absolute left-[30px] bottom-[30px]">
-          <h1>{data.title}</h1>
-
-          <h1>{data.description}</h1>
+      <div className="flex gap-4 flex-col p-3 rounded-lg bg-gray-50 relative">
+        <img src={data.cover_image} alt="" className="rounded-lg w-[1216px] h-[600px]" />
+        <div className="w-[598px] flex flex-col gap-[24px] items-start p-[40px] rounded-lg bg-white absolute left-[30px] bottom-[30px]">
+          <h3 className="flex justify-center items-center px-[10px] py-[4px] rounded-md">{data.type_of}</h3>
+        <h2>{data.title}</h2>
+          <p>{new Date(data.created_at).toLocaleDateString()}</p>
         </div>
       </div>
     </div>
   );
 }
+
+
+
