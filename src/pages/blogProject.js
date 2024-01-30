@@ -15,7 +15,7 @@ export default function BlogProject(props) {
 export async function getStaticProps() {
   const result = await fetch("https://dev.to/api/articles?per_page=10&top=2");
   const posts = await result.json();
-
+  console.log(posts);
   return {
     props: { articles: posts },
   };
