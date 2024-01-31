@@ -9,13 +9,13 @@
 }
 
 @layer base {
-p {
+  p {
     @apply text-[#97989F] font-normal
     text-base;
   }
   h2 {
     @apply text-[#181A2A] font-semibold
-    text-4xl ;
+    text-4xl;
   }
   h3 {
     @apply text-white font-medium bg-[#4B6BFB]
@@ -33,4 +33,8 @@ p {
     @apply text-[#4B6BFB] font-medium bg-white
     text-sm;
   }
- }
+  h6 {
+    @apply text-[#495057] font-bold
+    text-xs;
+  }
+}
