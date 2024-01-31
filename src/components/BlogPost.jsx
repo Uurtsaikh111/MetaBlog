@@ -4,7 +4,7 @@ export default function BlogPost(props) {
   const { data2 } = props;
   return (
     <div>
-      <div className="flex gap-4 flex-col p-3 rounded-lg w-[360px] h-[444px]">
+      <div className="flex gap-4 flex-col p-3 rounded-lg w-[390px] h-[444px]">
         <img
           src={data2.social_image}
           alt=""
@@ -15,7 +15,15 @@ export default function BlogPost(props) {
             {data2.tag_list[0]}
           </h5>
           <h4>{data2.title}</h4>
-          <p>{new Date(data2.created_at).toLocaleDateString()}</p>
+          <div className="flex gap-[20px]">
+            <div className="flex justify-start items-center gap-3">
+            <img
+              className="w-9 h-9 rounded-[28px]"
+              src={data2.user.profile_image_90}
+            />
+            <p className="text-neutral-400 text-base font-normal font-['Work Sans'] leading-normal">{data2.user.name}</p>
+            </div>
+          <p className="py-[5px]">{new Date(data2.created_at).toLocaleDateString()}</p></div>
         </div>
       </div>
     </div>

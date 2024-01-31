@@ -5,8 +5,8 @@ import React from "react";
 const Blog = (props) => {
   const { posts1 } = props;
   return (
-    <div className="flex gap-[30px]">
-      <div className="flex flex-col gap-[32px] items-start w-[1216px]">
+    <div className="flex gap-[30px] ">
+      <div className="flex flex-col gap-[32px] items-start justify-center w-[1216px] m-auto">
         <SubHeader />
         <div className="flex flex-wrap gap-[20px]">
           {posts1.map((data2) => (

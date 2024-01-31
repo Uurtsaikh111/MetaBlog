@@ -6,7 +6,7 @@ const Blog = (props) => {
   const { posts1 } = props;
   return (
     <div className="flex gap-[30px]">
-      <div className="flex flex-col gap-[32px] items-start w-[1216px]">
+      <div className="flex flex-col gap-[32px] items-start justify-center w-[1216px] m-auto">
         <SubHeader />
         <div className="flex flex-wrap gap-[20px]">
           {posts1.map((data2) => (
@@ -20,7 +20,7 @@ const Blog = (props) => {
 export default Blog;
 
 export async function getStaticProps() {
-  const posts2 = await fetch("https://dev.to/api/articles?per_page=5");
+  const posts2 = await fetch("https://dev.to/api/articles?per_page=1");
   const posts1 = await posts2.json();
   return {
     props: { posts1 },

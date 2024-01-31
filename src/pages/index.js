@@ -7,7 +7,7 @@ export default function Home(props) {
   const { posts,trending,posts1} = props;
 console.log(posts)
   return (
-    <div className="flex flex-col gap-[100px] items-center">
+    <div className="flex flex-col gap-[100px] items-center justify-between">
      <div>  {posts.map((data) => (
         <Highlight data={data} />
       ))}</div>
