@@ -20,7 +20,9 @@ const Blog = (props) => {
 export default Blog;
 
 export async function getStaticProps() {
-  const posts2 = await fetch("https://dev.to/api/articles?per_page=1");
+  const posts2 = await fetch(
+    "https://dev.to/api/articles?per_page=9&top=5&tag=design"
+  );
   const posts1 = await posts2.json();
   return {
     props: { posts1 },

@@ -8,7 +8,7 @@ import FooterIcon from "./icons/FooterIcon";
 
 export default function Footer() {
   return (
-    <div className="w-[1367px] h-[495px]  px-[90px] pt-16 bg-neutral-100 border-t border-gray-200 flex-col justify-start items-start gap-[25px] inline-flex ">
+    <div className="w-[1367px] h-[495px]  px-[90px] pt-16 bg-neutral-100 border-t border-gray-200 flex flex-col gap-[25px] items-center justify-center m-auto">
       <div className="flex">
         <div className="w-[289px] h-[236px]  justify-start items-start gap-6 inline-flex">
           <div className="w-[280px] h-40 flex-col justify-start items-start gap-3 inline-flex">
@@ -50,11 +50,11 @@ export default function Footer() {
           <div className="text-zinc-700 text-base font-normal font-['Plus Jakarta Sans'] leading-normal">
             Terms of Use
           </div>
-          
+
           <div className="text-zinc-700 text-base font-normal font-['Plus Jakarta Sans'] leading-normal border-l-2 pl-4">
             Privacy Policy
           </div>
-          
+
           <div className="text-zinc-700 text-base font-normal font-['Plus Jakarta Sans'] leading-normal border-l-2 pl-4">
             Cookie Policy
           </div>

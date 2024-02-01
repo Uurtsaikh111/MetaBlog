@@ -1,26 +1,56 @@
 import BlogPost from "@/components/BlogPost";
 import SubHeader from "@/components/Subheader";
-import React from "react";
+import React, { useState } from "react";
 
 const Blog = (props) => {
   const { posts1 } = props;
+  const [articles, setArticles] = useState(posts1);
+  const [pageNumber, setPageNumber] = useState(2);
+  const [loading, setLoading] = useState(false);
+
+  async function loadMoreHandler() {
+    setLoading(true);
+    console.log(pageNumber);
+    const response = await fetch(
+      `https://dev.to/api/articles?tag=design&per_page=3&tag=technology&page=${pageNumber}`
+    );
+    const data = await response.json();
+    setArticles([...articles, ...data]);
+    setPageNumber(pageNumber + 1);
+    setLoading(false);
+  }
+  if (loading) {
+    return (
+      <div className="w-full h-[100vh] flex items-center justify-center">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
   return (
     <div className="flex gap-[30px]">
       <div className="flex flex-col gap-[32px] items-start justify-center w-[1216px] m-auto">
         <SubHeader />
         <div className="flex flex-wrap gap-[20px]">
           {posts1.map((data2) => (
-            <BlogPost data2={data2} />
+            <BlogPost data2={data2} key={`${data2.title}-${data2.id}`} />
           ))}
         </div>
+        <button
+          className="w-[123px] h-[48px] rounded-md  border px-[20px] py-[12px] flex m-auto mb-[40px]"
+          onClick={loadMoreHandler}
+        >
+          Load More
+        </button>
       </div>
     </div>
   );
 };
 export default Blog;
 
-export async function getStaticProps() {
-  const posts2 = await fetch("https://dev.to/api/articles?per_page=4");
+export async function getServerSideProps() {
+  const posts2 = await fetch(
+    "https://dev.to/api/articles?per_page=3&tag=technology"
+  );
   const posts1 = await posts2.json();
   return {
     props: { posts1 },

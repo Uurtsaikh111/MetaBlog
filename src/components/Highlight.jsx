@@ -7,7 +7,7 @@ export default function Highlight(props) {
     <div>
       <div className="flex gap-4 flex-col p-3 rounded-lg bg-gray-50 relative">
         <img
-          src={data.cover_image}
+          src={data.social_image}
           alt=""
           className="rounded-lg w-[1216px] h-[600px]"
         />
