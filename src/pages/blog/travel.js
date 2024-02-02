@@ -2,8 +2,7 @@ import BlogPost from "@/components/BlogPost";
 import SubHeader from "@/components/Subheader";
 import React, { useState } from "react";
 
-export default function Page({posts1}) {
-  
+export default function Page({ posts1 }) {
   const [articles, setArticles] = useState(posts1);
   const [pageNumber, setPageNumber] = useState(2);
   const [loading, setLoading] = useState(false);
@@ -11,7 +10,7 @@ export default function Page({posts1}) {
   async function loadMoreHandler() {
     setLoading(true);
     const response = await fetch(
-      `https://dev.to/api/articles?per_page=4&tag=travel&page=${pageNumber}`
+      `https://dev.to/api/articles?per_page=3&tag=travel&page=${pageNumber}`
     );
     const data = await response.json();
     setArticles([...articles, ...data]);
@@ -31,7 +30,11 @@ export default function Page({posts1}) {
         <SubHeader />
         <div className="flex flex-wrap gap-[20px]">
           {articles.map((data2) => (
-            <BlogPost data2={data2} key={`${data2.title}-${data2.id}`}   id={data2.id}/>
+            <BlogPost
+              data2={data2}
+              key={`${data2.title}-${data2.id}`}
+              id={data2.id}
+            />
           ))}
         </div>
         <button
@@ -43,12 +46,11 @@ export default function Page({posts1}) {
       </div>
     </div>
   );
-};
-
+}
 
 export async function getServerSideProps() {
   const posts2 = await fetch(
-    "https://dev.to/api/articles?per_page=4&tag=travel"
+    "https://dev.to/api/articles?per_page=3&tag=travel"
   );
   const posts1 = await posts2.json();
   return {
