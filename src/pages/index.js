@@ -25,7 +25,7 @@ console.log(posts)
   );
 }
 export async function getStaticProps() {
-  const result = await fetch("https://dev.to/api/articles?per_page=1&top=1");
+  const result = await fetch("http://localhost:4000/api/meta");
   const posts = await result.json();
 
   const trendings = await fetch("https://dev.to/api/articles?per_page=4&top=1");
