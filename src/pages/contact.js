@@ -20,6 +20,7 @@ export default function Contact() {
           <h4>Contact</h4>
           <p className="w-[160px]">313-332-8662 info@email.com</p>
         </div>
+        <div>change</div>
       </div>
     </div>
   );
