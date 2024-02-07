@@ -2,7 +2,7 @@ import React from "react";
 import parse from "html-react-parser";
 
 export default function Page({ data }) {
-  console.log("a,djbajbdab", data);
+  console.log("data12", data);
 
   return (
     <div className="w-[1920px] flex flex-col mt-[100px] mb-40">
@@ -25,7 +25,8 @@ export default function Page({ data }) {
           </div>
         </div>
         <img className="w-full rounded-md" src={data.social_image} alt="" />
-        {parse(data.body_html)}
+
+        <div>{parse(data.body_html)}</div>
       </div>
     </div>
   );
@@ -36,7 +37,7 @@ export const getServerSideProps = async (context) => {
   const { id } = query;
   const response = await fetch(`https://dev.to/api/articles/${id}`);
   const data = await response.json();
-  console.log("idididididiid", id);
+  console.log("data.id:", id);
   return {
     props: {
       data,
