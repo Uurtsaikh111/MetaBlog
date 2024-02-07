@@ -2,31 +2,36 @@ import React from "react";
 import parse from "html-react-parser";
 
 export default function Page({ data }) {
-  console.log("data12", data);
+  console.log("data:", data.body_html);
 
   return (
-    <div className="w-[1920px] flex flex-col mt-[100px] mb-40">
-      <div className="w-[900px] flex flex-col gap-8 m-auto">
-        <div className="self-stretch text-gray-900 text-4xl font-semibold font-['Work Sans'] leading-7">
-          {data.title}
-        </div>
-        <div className="justify-start items-center gap-8 inline-flex">
-          <div className="justify-start items-center gap-3 flex">
+    <div className="w-[800px] gap-[32px] m-auto flex flex-col">
+      <div className="flex flex-col gap-5">
+        <h1 className="text-4xl font-semibold text-[#181A2A]"> {data.title}</h1>
+        <div className="flex gap-6 text-[#696A75] ">
+          <div className="flex gap-2 align-center text-center justify-center">
             <img
-              className="w-9 h-9 rounded-[28px]"
+              className="w-7 h-7 rounded-3xl"
               src={data.user.profile_image_90}
+              alt=""
             />
-            <div className="text-neutral-400 text-base font-medium font-['Work Sans'] leading-normal">
-              {data.user.name}
-            </div>
+            <p>{data.user.name}</p>
           </div>
-          <div className="text-neutral-400 text-base font-normal font-['Work Sans'] leading-normal">
-            {new Date(data.created_at).toLocaleDateString()}
-          </div>
+          <p>{new Date(data.published_at).toLocaleDateString()}</p>
         </div>
-        <img className="w-full rounded-md" src={data.social_image} alt="" />
-
-        <div>{parse(data.body_html)}</div>
+      </div>
+      <div className="h-[462px]">
+        <img src={data.social_image} alt="" />
+      </div>
+      <div
+        className="flex flex-col gap-4 text-xl font-normal text-[#3B3C4A] h-[1000px] overflow-hidden"
+        //   class={box} style={{
+        //     .box h1 {
+        //         'color:red !important'
+        //     }
+        //   }}
+      >
+        {parse(data.body_html)}
       </div>
     </div>
   );
@@ -35,9 +40,9 @@ export default function Page({ data }) {
 export const getServerSideProps = async (context) => {
   const { query } = context;
   const { id } = query;
-  const response = await fetch(`https://dev.to/api/articles/${id}`);
-  const data = await response.json();
-  console.log("data.id:", id);
+  const res = await fetch(`https://dev.to/api/articles/${id}`);
+  const data = await res.json();
+  console.log("ssideDate:", data);
   return {
     props: {
       data,
