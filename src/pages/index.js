@@ -2,11 +2,33 @@ import BlogPost from "@/components/BlogPost";
 import Highlight from "@/components/Highlight";
 import Trending from "@/components/Trending";
 import Link from "next/link";
-import React from "react";
+import React,{useState} from "react";
 
-export default function Home(props) {
-  const { posts, trending, posts1 } = props;
-  console.log(posts);
+export default function Home({ posts, trending, posts1 } ) {
+  //const { posts, trending, posts1 } = props;
+ 
+  const [articles, setArticles] = useState(posts1);
+  const [pageNumber, setPageNumber] = useState(2);
+  const [loading, setLoading] = useState(false);
+
+  async function loadMoreHandler() {
+    setLoading(true);
+    const response = await fetch(
+      `https://dev.to/api/articles?per_page=3&page=${pageNumber}`
+    );
+    const data = await response.json();
+    setArticles([...articles, ...data]);
+    setPageNumber(pageNumber + 1);
+    setLoading(false);
+  }
+  if (loading) {
+    return (
+      <div className="w-full h-[100vh] flex items-center justify-center">
+        <h1>Loading...</h1>
+      </div>
+    );
+  }
+
   return (
     <div className="flex flex-col gap-[100px] items-center justify-between">
       <div>
@@ -30,18 +52,28 @@ export default function Home(props) {
       <div className="flex flex-col gap-[32px] items-start w-[1216px]">
         <div className="text-2xl text-[#181A2A] font-bold">All Blog Post</div>
         <div className="flex flex-wrap gap-[20px]">
-          {posts1.map((data2) => (
+          {articles.map((data2) => (
             <Link href={`/article/${data2.id}`}>
-              <BlogPost data2={data2} />
+              <BlogPost data2={data2} 
+              key={`${data2.title}-${data2.id}`}
+              id={data2.id}
+              />
             </Link>
           ))}
+          
         </div>
+        <button
+          className="w-[123px] h-[48px] rounded-md  border px-[20px] py-[12px] flex m-auto mb-[40px]"
+          onClick={loadMoreHandler}
+        >
+          Load More
+        </button>
       </div>
     </div>
   );
 }
 export async function getStaticProps() {
-  const result = await fetch("https://dev.to/api/articles?per_page=1&top=1");
+  const result = await fetch("https://dev.to/api/articles?per_page=1&latest=1");
   const posts = await result.json();
 
   const trendings = await fetch("https://dev.to/api/articles?per_page=4&top=1");
