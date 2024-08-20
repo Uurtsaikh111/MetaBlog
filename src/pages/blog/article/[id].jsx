@@ -25,11 +25,6 @@ export default function Page({ data }) {
       </div>
       <div
         className="flex flex-col gap-4 text-xl font-normal text-[#3B3C4A] h-[1000px] overflow-hidden"
-        //   class={box} style={{
-        //     .box h1 {
-        //         'color:red !important'
-        //     }
-        //   }}
       >
         {parse(data.body_html)}
       </div>

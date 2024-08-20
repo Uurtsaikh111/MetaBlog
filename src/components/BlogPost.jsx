@@ -1,7 +1,8 @@
 import React from "react";
 
 export default function BlogPost(props) {
-  const { data2 } = props;
+  const { data2} = props;
+
   return (
     <div>
       <div className="flex flex-col p-3 rounded-lg w-[390px] h-[460px] border border-inherit">

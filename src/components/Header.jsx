@@ -15,7 +15,7 @@ export default function Header() {
       </div>
       <div className="flex items-center gap-3 py-2 px-4 rounded-[5px]  bg-zinc-100">
         <input
-          class=" bg-zinc-100 "
+          className=" bg-zinc-100 "
           placeholder="Search"
           type="text"
           name="search"

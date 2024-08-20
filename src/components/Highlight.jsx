@@ -2,7 +2,6 @@ import Link from "next/link";
 import React from "react";
 
 export default function Highlight(props) {
-  console.log(props);
   const { data } = props;
   return (
     <div>

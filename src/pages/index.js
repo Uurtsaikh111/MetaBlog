@@ -5,7 +5,7 @@ import Link from "next/link";
 import React,{useState} from "react";
 
 export default function Home({ posts, trending, posts1 } ) {
-  //const { posts, trending, posts1 } = props;
+
  
   const [articles, setArticles] = useState(posts1);
   const [pageNumber, setPageNumber] = useState(2);
@@ -33,8 +33,10 @@ export default function Home({ posts, trending, posts1 } ) {
     <div className="flex flex-col gap-[100px] items-center justify-between">
       <div>
         {" "}
-        {posts.map((data) => (
-          <Link href={`/article/${data.id}`}>
+        {posts.map((data, key) => (
+          <Link 
+          key={key}
+          href={`/article/${data.id}`}>
             <Highlight data={data} />
           </Link>
         ))}
@@ -42,8 +44,10 @@ export default function Home({ posts, trending, posts1 } ) {
       <div className="flex flex-col gap-[30px] items-start w-[1216px]">
         <div className="text-2xl text-[#181A2A] font-bold">Trending</div>
         <div className="w-[1216px] flex gap-[20px]">
-          {trending.map((data1) => (
-            <Link href={`/article/${data1.id}`}>
+          {trending.map((data1, index) => (
+            <Link
+            key={index}
+            href={`/article/${data1.id}`}>
               <Trending data1={data1} />
             </Link>
           ))}
@@ -52,8 +56,10 @@ export default function Home({ posts, trending, posts1 } ) {
       <div className="flex flex-col gap-[32px] items-start w-[1216px]">
         <div className="text-2xl text-[#181A2A] font-bold">All Blog Post</div>
         <div className="flex flex-wrap gap-[20px]">
-          {articles.map((data2) => (
-            <Link href={`/article/${data2.id}`}>
+          {articles.map((data2,key) => (
+            <Link 
+            key={key}
+            href={`/article/${data2.id}`}>
               <BlogPost data2={data2} 
               key={`${data2.title}-${data2.id}`}
               id={data2.id}
